@@ -1,0 +1,81 @@
+consumers:
+  names:
+    [
+      "Véronique",
+      "Christian",
+      "Marc",
+      "Reinhilde",
+      "Gaby_Haus",
+      "Gaby_Hall",
+      "Tina",
+      "Pit",
+    ]
+  smartmeters:
+    [
+      "LU0000010637000000000000070552943",
+      "LU0000010637000000000000070535363",
+      "LU0000010637000000000000070232023",
+      "LU0000010637000000000000070232024",
+      "LU0000010637000000000000070232026",
+      "LU0000010637000000000000070311627",
+      "LU0000010637000000000000070301101",
+      "LU0000010637000000000000070232025",
+    ]
+  obiscode:
+    [
+      "1-65:1.29.2",
+      "1-65:1.29.2",
+      "1-65:1.29.2",
+      "1-65:1.29.2",
+      "1-65:1.29.2",
+      "1-65:1.29.2",
+      "1-65:1.29.2",
+      "1-65:1.29.2",
+    ]
+emails:
+  [
+    "veronique.diderrich@gmail.com",
+    "christiandiederich74@gmail.com",
+    "marc@durbach.com",
+    "reinhilde.thomassen@gmail.com",
+    "larrygab@pt.lu",
+    "larrygab@pt.lu",
+    "wagnertina86@gmail.com",
+    "pit15larry@hotmail.com",
+  ]
+
+producers:
+  names: ["Véronique", "Marc", "Gaby", "Pit"]
+  smartmeters:
+    [
+      "LU0000010637000000000000770604712",
+      "LU0000010637000000000000770232023",
+      "LU0000010637000000000000770311645",
+      "LU0000010637000000000000770232025",
+    ]
+  obiscode: ["1-65:2.29.2", "1-65:2.29.2", "1-65:2.29.2", "1-65:2.29.2"]
+  emails:
+    [
+      "veronique.diderrich@gmail.com",
+      "marc@durbach.com",
+      "larrygab@pt.lu",
+      "pit15larry@hotmail.com",
+    ]
+leneda:
+  url: "https://api.leneda.lu"
+  energyId:
+    header: "X-ENERGY-ID"
+    value: "LUXE-MA-DU-ZPUGN"
+  apiKey:
+    header: "X-API-KEY"
+    value: "e0e3f107-1836-4717-a090-d1863fe9f30c"
+  api:
+    meteringData: "/api/metering-points/" #{meteringPointCode}/time-series"
+pricing:
+  kwhprice: 0.11 # price agrred on between members
+  normalfee: 0.07 # price paid for the produced energy
+  network: 0.0759 # network fee
+  consumerprice: 0.15 # price paid by the consumer (energyrevolt)
+  tax: 0.0010
+  compensation: -0.0376 #Preisdeckel
+  tva: 0.08 # 8%

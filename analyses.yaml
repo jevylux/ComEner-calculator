@@ -1,0 +1,47 @@
+producers_net:
+  names: ["MarcSud", "MarcNord", "Véronique", "Gaby"]
+  smartmeters:
+    [
+      "LU0000010637000000000000770400053",
+      "LU0000010637000000000000770232023",
+      "LU0000010637000000000000770604712",
+      "LU0000010637000000000000770311645",
+    ]
+  obiscode: ["1-1:2.29.0", "1-1:2.29.0", "1-1:2.29.0", "1-1:2.29.0"]
+
+producers_auto:
+  names: ["Véronique", "Gaby"]
+  smartmeters:
+    ["LU0000010637000000000000770604712", "LU0000010637000000000000770311645"]
+  obiscode: ["1-65:2.29.1", "1-65:2.29.3"]
+
+producers_shared:
+  names: ["MarcNord", "Véronique", "Gaby"]
+  smartmeters:
+    [
+      "LU0000010637000000000000770232023",
+      "LU0000010637000000000000770604712",
+      "LU0000010637000000000000770311645",
+    ]
+  obiscode: ["1-65:2.29.2", "1-65:2.29.2", "1-65:2.29.2"]
+
+producers_sold:
+  names: ["MarcNord", "Véronique", "Gaby"]
+  smartmeters:
+    [
+      "LU0000010637000000000000770232023",
+      "LU0000010637000000000000770604712",
+      "LU0000010637000000000000770311645",
+    ]
+  obiscode: ["1-65:2.29.9", "1-65:2.29.9", "1-65:2.29.9"]
+leneda:
+  url: "https://api.leneda.lu"
+  energyId:
+    header: "X-ENERGY-ID"
+    value: "LUXE-MA-DU-ZPUGN"
+  apiKey:
+    header: "X-API-KEY"
+    value: "e0e3f107-1836-4717-a090-d1863fe9f30c"
+  api:
+    meteringData: "/api/metering-points/" #{meteringPointCode}/time-series"
+

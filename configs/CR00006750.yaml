@@ -1,0 +1,58 @@
+consumers:
+  names: ["Sebastien", "Jessica", "Manon"]
+  #"Manon"
+  smartmeters:
+    [
+      "LU0000010621200000000000070087317",
+      "LU0000010736400000000000070362924",
+      "LU0000010619500000000000070551834",
+    ]
+  obiscode: ["1-65:1.29.4", "1-65:1.29.4", "1-65:1.29.4"]
+  emails: ["sebastien@durbach.com", "jessica@durbach.com", "manon@durbach.com"]
+producers:
+  names: ["Véronique", "Marc", "Gaby", "Pit", "Madalin", "Luc"]
+  smartmeters:
+    [
+      "LU0000010637000000000000770604712",
+      "LU0000010637000000000000770232023",
+      "LU0000010637000000000000770311645",
+      "LU0000010637000000000000770232025",
+      "LU0000010637000000000000770392841",
+      "LU0000010637000000000000770314570",
+    ]
+  obiscode:
+    [
+      "1-65:2.29.2",
+      "1-65:2.29.4",
+      "1-65:2.29.4",
+      "1-65:2.29.4",
+      "1-65:2.29.4",
+      "1-65:2.29.4",
+    ]
+  emails:
+    [
+      "veronique.diderrich@gmail.com",
+      "marc@durbach.com",
+      "larrygab@pt.lu",
+      "pit15larry@hotmail.com",
+      "m.amzolini@gmail.com",
+      "lschaus@pt.lu",
+    ]
+leneda:
+  url: "https://api.leneda.lu"
+  energyId:
+    header: "X-ENERGY-ID"
+    value: "LUXE-MA-DU-ZPUGN"
+  apiKey:
+    header: "X-API-KEY"
+    value: "e0e3f107-1836-4717-a090-d1863fe9f30c"
+  api:
+    meteringData: "/api/metering-points/" #{meteringPointCode}/time-series"
+pricing:
+  kwhprice: 0.11 # price agrred on between members
+  normalfee: 0.07 # price paid for the produced energy
+  network: 0.0759 # network fee
+  consumerprice: 0.15 # price paid by the consumer (energyrevolt)
+  tax: 0.0010
+  compensation: -0.0376 #Preisdeckel
+  tva: 0.08 # 8%

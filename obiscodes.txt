@@ -1,0 +1,35 @@
+OBIS	    Unit	Service Type	Description
+1-1:1.29.0	kW	    Consumption	    Measured active consumption
+1-1:2.29.0	kW	    Production	    Measured active production
+1-1:3.29.0	kVAR	Consumption	    Measured reactive consumption
+1-1:4.29.0	kVAR	Consumption	    Measured reactive production
+1-65:1.29.1	kW	    Consumption	    Consumption covered by production of layer 1 sharing Group (AIR)
+1-65:1.29.3	kW	    Consumption	    Consumption covered by production of layer 2 sharing Group (ACR/ACF/AC1)
+1-65:1.29.2	kW	    Consumption	    Consumption covered by production of layer 3 sharing Group (CEL)
+1-65:1.29.4	kW	    Consumption	    Consumption covered by production of layer 4 sharing Group (APS/CER/CEN)
+1-65:1.29.9	kW	    Consumption	    Remaining consumption after sharing invoiced by supplier
+1-65:2.29.1	kW	    Production	    Production shared within layer 1 sharing Group (AIR)
+1-65:2.29.3	kW	    Production	    Production shared within layer 2 sharing Group (ACR/ACF/AC1)
+1-65:2.29.2	kW	    Production	    Production shared within layer 3 sharing Group (CEL)
+1-65:2.29.4	kW	    Production	    Production shared within layer 4 sharing Group (APS/CER/CEN)
+1-65:2.29.9	kW	    Production	    Remaining production after sharing sold to market
+7-1:99.23.15	m³	Consumption	    Measured consumed volume
+7-1:99.23.17	Nm³	Consumption	    Measured consumed standard volume
+7-20:99.33.17	kWh	Consumption	    Measured consumed energy
+
+D'OBIS Kennziffer:
+1-1:1.29.0 ass de Verbrauch sou wéi en um Zähler gemoos gëtt
+1-1:2.29.0 ass d'Produktioun sou wéi se um Zähler gemoos gëtt
+D'OBIS Kennziffer 1-65:x.29.y: sinn déi vun der Leneda gerechent je nodeems a wéi enger Verdeelgrupp een sech befënnt a je nodeems op et sech em e Verbrauch oder eng Produktioun handelt.
+Fir de Verbrauch bedeiten d'OBIS Kennzifferen:
+1-65:1.29.1 ass den Undeel vum Verbrauch deen duerch d'Autoconsommation gedeckt gouf
+1-65:1.29.3 ass deen Undeel vum Verbrauch deen duerch eng kollektiv lokal Verdeelgrupp (<100m) gedeckt gouf
+1-65.1.29.2 ass deen Undeel vum Verbrauch deen duerch eng lokal Verdeelgrupp (CEL) gedeckt gouf
+1-65.1.29.4 ass deen Undeel vum Verbrauch deen duerch eng national Verdeelgrupp gedeckt gouf
+1-65.1.29.9 ass deen Undeel vum Verbrauch dee nach iwwreg bléiwt a vum Fournisseur verrechent gëtt
+Fir d'Produktioun bedeiten d'OBIS Kennzifferen:
+1-65:2.29.1 ass den Undeel vun der Produktioun deen d'Autoconsommation gedeckt huet
+1-65:2.29.3 ass deen Undeel vun der Produktioun deen an eng kollektiv lokal Verdeelgrupp (<100m) gefloss ass
+1-65.2.29.2 ass deen Undeel vun der Produktioun deen an eng lokal Verdeelgrupp (CEL) gefloss ass
+1-65.2.29.4 ass deen Undeel vun der Produktioun deen an eng national Verdeelgrupp gefloss ass
+1-65.2.29.9 ass deen Undeel vun der Produktioun dee nach iwwreg bléiwt a schlussendleg un de Fournisseur verrechent gëtt
