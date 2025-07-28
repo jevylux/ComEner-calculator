@@ -83,6 +83,7 @@ else:
 
 print(args)
 
+
 datapath = "/Users/marcdurbach/Development/python/ComEner-calculator/data"
 configpath = "/Users/marcdurbach/Development/python/ComEner-calculator/configs"
 yamlFileToUse = configpath+"/"+args.groupeDePartageNumber+".yaml"
