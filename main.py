@@ -11,6 +11,8 @@ import time
 import csv
 import smtplib
 from email.message import EmailMessage
+import sqlite3 as lite
+from databasefunctions import getMemberIDAndPodID, createOrUpdateAccounting
 
 
 
@@ -308,6 +310,7 @@ for consumer in consumption:
     difference = ((totalEur/ kwhprice) * kwhpriceCons) - totalEur
     totalkWh = merged_df['valuecons'][df_name].sum() / 4
     print(f"{consumer['name']} has to pay {totalEur:.3f} EUR for a total of {energy_used:.3f} kWh from community, this is {difference:.3f} less than the fee to be paid to the provider ({(difference/totalEur)*100:.2f} %)")
+    consumer['amount'] = -round(totalEur,2)
     # add line to array
     csv_data.append([consumer['name'], round(energy_used, 2), round(totalEur,2)])
 merged_df["power_sold_to_grid"] = merged_df["total_sum_prod"] - merged_df["power_used_by_community"]
@@ -326,6 +329,7 @@ for producer in production:
     totalEur = merged_df[f"has_to_receive-{producer['name']}"].sum()
     difference = totalEur - ((totalEur/ kwhprice) * normalfee)
     print(f"{producer['name']} will receive {totalEur:.2f} EUR, this is {difference:.3f} more than the fee received by the provider ({(difference/totalEur)*100:.2f} %)")
+    producer['amount'] = round(totalEur,2)
     csv_data.append([producer['name'], 0, 0, round(energy_produced, 2), round(totalEur, 2)])
 print("--------------------")
 merged_df.to_csv(f'{datapath}/{groupeDePartage}-{ftimestr}-merged.csv', index=False, sep=";")
@@ -427,3 +431,44 @@ if sendMails:
    
 
 print("Programm terminated")
+#Update database here
+# add accounting data for each pod and customer
+# Create a connection to the database
+con = lite.connect('/Users/marcdurbach/Development/python/ComEner-data-management/database/commEnergy.db')
+
+# we try to get the Sharing group id from the sharing name
+cur = con.cursor()
+cur.execute("SELECT sgID FROM sharingGroup WHERE sgNumber = ?", (groupeDePartage,))
+sgID = cur.fetchone()
+con.close()
+
+if sgID:
+    sgID = sgID[0]
+    print(f"Found Sharing Group ID: {sgID}")
+else:
+    print("Sharing Group not found")
+    sgID = None
+
+# we check if a record for the pod, date and month exists
+print("checking producers")
+amount = 0
+for producer in production:
+    # we will check the memberid and the pod id for each line
+    print(producer["meteringPoint"], producer["name"], producer["amount"])
+    memberID, podID = getMemberIDAndPodID(producer["meteringPoint"])
+    if memberID is None or podID is None:
+        print(f"Skipping {producer['name']} due to missing pod or member ID.")
+    else:
+        createOrUpdateAccounting(memberID, podID, sgID, args.year, args.month, producer["amount"])
+
+
+print("checking consumers")
+for consumer in consumption:
+    # we will check the memberid and the pod id for each line
+    print(consumer["meteringPoint"], consumer["name"], consumer["amount"])
+    memberID, podID = getMemberIDAndPodID(consumer["meteringPoint"])
+    if memberID is None or podID is None:
+        print(f"Skipping {consumer['name']} due to missing pod or member ID.")
+    else:
+        createOrUpdateAccounting(memberID, podID, sgID, args.year, args.month, consumer["amount"])
+      
